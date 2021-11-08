@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Api\ProductRepositoryInterface">
+        <plugin name="JoinParityCustomAttribute" type="AR\AcadChallenge\Plugin\ProductRepositoryPlugin"/>
+    </type>
+
+    <preference for="AR\AcadChallenge\Api\ParityAttributeStorageInterface" type="AR\AcadChallenge\Model\Product\ParityAttributeStorage" />
+    <preference for="AR\AcadChallenge\Api\Data\ParityAttributeInterface" type="AR\AcadChallenge\Model\Product\ParityAttribute" />
+    <type name="Magento\Framework\EntityManager\MetadataPool">
+        <arguments>
+            <argument name="metadata" xsi:type="array">
+                <item name="AR\AcadChallenge\Api\Data\ParityAttributeInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="string">test_custom_product_index</item>
+                    <item name="identifierField" xsi:type="string">id</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>

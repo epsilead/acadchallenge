@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="test_custom_product_index" resource="default" engine="innodb" comment="Test Custom Product Index">
+        <column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true"
+                comment="Id"/>
+        <column xsi:type="int" name="product_id" unsigned="true" nullable="false" identity="false"
+                default="0" comment="Product Id"/>
+        <column xsi:type="int" name="result" unsigned="true" nullable="false" identity="false"
+                default="0" comment="Result"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <constraint xsi:type="foreign"
+                    referenceId="TEST_CUSTOM_PRODUCT_INDEX_PRODUCT_ID_CATALOG_PRODUCT_ENTITY_ENTITY_ID"
+                    table="test_custom_product_index" column="product_id"
+                    referenceTable="catalog_product_entity"
+                    referenceColumn="entity_id" onDelete="CASCADE"
+        />
+    </table>
+</schema>
